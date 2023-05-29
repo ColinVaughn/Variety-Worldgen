@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "varietyworldgen",
+  "version": "${version}",
+  "name": "varietyworldgen",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Colin Vaughn/varietyworldgen"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/varietyworldgen/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.varietyworldgen.Varietyworldgen"
+    ],
+    "modmenu": [
+      "org.varietyworldgen.ModMenuInt"
+    ]
+  },
+  "mixins": [
+    "varietyworldgen.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "1.19.*",
+    "fabricloader": "*",
+    "cloth-config": "*"
+  }
+}
