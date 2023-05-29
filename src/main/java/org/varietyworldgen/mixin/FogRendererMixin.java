@@ -1,4 +1,5 @@
 package org.varietyworldgen.mixin;
+
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Camera;
 import net.minecraft.client.player.LocalPlayer;
@@ -11,14 +12,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.FogType;
-
-import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import org.varietyworldgen.Util.RenderSystemUtil;
 import org.varietyworldgen.Varietyworldgen;
 
 @Mixin(FogRenderer.class)
