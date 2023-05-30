@@ -13,7 +13,6 @@ public class WorldRendererMixin {
         return Math.signum(16.0f) * 8.0f;
     }
 
-    // Changes the color of the top of the sky
     @ModifyVariable(method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/world/ClientWorld;getSkyColor(Lnet/minecraft/util/math/Vec3d;F)Lnet/minecraft/util/math/Vec3d;"))
     @SuppressWarnings("InvalidInjectorMethodSignature")
     public Vec3d renderSkyInject(Vec3d original) {
