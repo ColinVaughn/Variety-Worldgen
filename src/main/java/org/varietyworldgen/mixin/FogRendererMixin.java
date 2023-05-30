@@ -8,9 +8,6 @@ import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.stat.Stat;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -21,7 +18,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.varietyworldgen.Util.MathUtil;
 import org.varietyworldgen.Util.RenderSystemUtil;
 import org.varietyworldgen.Varietyworldgen;
 
@@ -33,8 +29,8 @@ public class FogRendererMixin {
         Entity entity = camera.getFocusedEntity();
 
         if (submersionType == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
-            float fogStart = viewDistance * Varietyworldgen.config.waterStart * 0.01f;
-            float fogEnd = viewDistance * Varietyworldgen.config.waterEnd * 0.01f;
+            float fogStart = viewDistance * Varietyworldgen.config.waterStartDeep * 0.01f;
+            float fogEnd = viewDistance * Varietyworldgen.config.waterEndDeep * 0.01f;
 
             if (entity instanceof ClientPlayerEntity) {
                 ClientPlayerEntity localPlayer = (ClientPlayerEntity) entity;
@@ -49,7 +45,8 @@ public class FogRendererMixin {
                 float depth = (float) (localPlayer.getPos().y - localPlayer.world.getSeaLevel());
                 float maxDepth = -20.0f;
                 float depthFactor = MathHelper.clamp(depth / maxDepth, 0.0f, 1.0f);
-                Vec3d waterColor = new Vec3d(0.68f, 0.83f, 1f).lerp(new Vec3d(0.211, 0.211, 0.211), depthFactor);
+                float smoothDepthFactor = smoothstep(0.0f, 1.0f, depthFactor);
+                Vec3d waterColor = lerpColor(new Vec3d(0.237f, 0.237f, 0.237f), new Vec3d(0.198, 0.198, 0.198), smoothDepthFactor);
                 RenderSystemUtil.setShaderFogColor(waterColor);
             }
 
@@ -80,5 +77,17 @@ public class FogRendererMixin {
             RenderSystemUtil.setShaderFogColor(new Vec3d(0.211, 0.211, 0.211));
             ci.cancel();
         }
+    }
+
+    private static float smoothstep(float edge0, float edge1, float x) {
+        float t = MathHelper.clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+        return t * t * (3.0f - 2.0f * t);
+    }
+
+    private static Vec3d lerpColor(Vec3d colorStart, Vec3d colorEnd, float t) {
+        float r = MathHelper.lerp(t, (float) colorStart.x, (float) colorEnd.x);
+        float g = MathHelper.lerp(t, (float) colorStart.y, (float) colorEnd.y);
+        float b = MathHelper.lerp(t, (float) colorStart.z, (float) colorEnd.z);
+        return new Vec3d(r, g, b);
     }
 }
