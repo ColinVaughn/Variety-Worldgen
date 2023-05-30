@@ -26,5 +26,7 @@
     "minecraft": "1.19.*",
     "fabricloader": "*",
     "cloth-config": "*"
-  }
+  },
+  "accessWidener": "variety-worldgen.accesswidener"
+
 }
