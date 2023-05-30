@@ -24,8 +24,7 @@
   ],
   "depends": {
     "minecraft": "1.19.*",
-    "fabricloader": "*",
-    "cloth-config": "*"
+    "fabricloader": "*"
   },
   "accessWidener": "variety-worldgen.accesswidener"
 

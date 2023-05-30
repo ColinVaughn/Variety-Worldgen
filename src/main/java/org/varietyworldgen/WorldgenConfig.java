@@ -1,21 +1,12 @@
 package org.varietyworldgen;
 
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import eu.midnightdust.lib.config.MidnightConfig;
 
-@Config(name = "worldgenconfig")
-public class WorldgenConfig implements ConfigData {
-    @ConfigEntry.Category(value = "water")
-    public boolean waterToggle = true;
-    @ConfigEntry.Category(value = "water")
-    public float waterStartDeep = -100.0f;
-    @ConfigEntry.Category(value = "water")
-    public float waterStartShallow = -80.0f;
-    @ConfigEntry.Category(value = "water")
-    public float waterEndDeep = 65.0f;
-    @ConfigEntry.Category(value = "water")
-    public float waterEndShallow = 75.0f;
-    @ConfigEntry.Category(value = "water")
-    public float waterEndSwamp = 50.0f;
+public class WorldgenConfig extends MidnightConfig {
+    @Entry public static boolean waterToggle = true;
+    @Entry(min=-200,max=200) public static float waterStartDeep = -100.0f;
+    @Entry(min=-200,max=200)public static float waterStartShallow = -80.0f;
+    @Entry(min=-200,max=200)public static float waterEndDeep = 65.0f;
+    @Entry(min=-200,max=200)public static float waterEndShallow = 75.0f;
+    @Entry(min=-200,max=200)public static float waterEndSwamp = 50.0f;
 }

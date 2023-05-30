@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.varietyworldgen.Util.RenderSystemUtil;
 import org.varietyworldgen.Varietyworldgen;
+import org.varietyworldgen.WorldgenConfig;
 
 @Mixin(BackgroundRenderer.class)
 public class FogRendererMixin {
@@ -28,16 +29,16 @@ public class FogRendererMixin {
         CameraSubmersionType submersionType = camera.getSubmersionType();
         Entity entity = camera.getFocusedEntity();
 
-        if (submersionType == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
-            float fogStart = viewDistance * Varietyworldgen.config.waterStartDeep * 0.01f;
-            float fogEnd = viewDistance * Varietyworldgen.config.waterEndDeep * 0.01f;
+        if (submersionType == CameraSubmersionType.WATER && WorldgenConfig.waterToggle) {
+            float fogStart = viewDistance * WorldgenConfig.waterStartDeep * 0.01f;
+            float fogEnd = viewDistance * WorldgenConfig.waterEndDeep * 0.01f;
 
             if (entity instanceof ClientPlayerEntity) {
                 ClientPlayerEntity localPlayer = (ClientPlayerEntity) entity;
                 RegistryEntry<Biome> biomeHolder = localPlayer.world.getBiome(localPlayer.getBlockPos());
 
                 if (biomeHolder.isIn(BiomeTags.HAS_CLOSER_WATER_FOG)) {
-                    fogEnd = viewDistance * Varietyworldgen.config.waterEndSwamp * 0.01f;
+                    fogEnd = viewDistance * WorldgenConfig.waterEndSwamp * 0.01f;
                 }
 
                 fogEnd *= Math.max(0.25f, localPlayer.getUnderwaterVisibility());
@@ -63,7 +64,7 @@ public class FogRendererMixin {
 
     @Inject(method = "render", at = @At(value = "HEAD"), cancellable = true)
     private static void renderInject(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci) {
-        if (camera.getSubmersionType() == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
+        if (camera.getSubmersionType() == CameraSubmersionType.WATER && WorldgenConfig.waterToggle) {
             RenderSystemUtil.setClearColor(new Vec3d(0.211, 0.211, 0.211));
             clearFog();
             ci.cancel();
@@ -73,7 +74,7 @@ public class FogRendererMixin {
     // Changes the color of the seam/transition in the sky
     @Inject(method = "setFogBlack", at = @At("HEAD"), cancellable = true)
     private static void setFogBlackInject(CallbackInfo ci) {
-        if (MinecraftClient.getInstance().gameRenderer.getCamera().getSubmersionType() == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
+        if (MinecraftClient.getInstance().gameRenderer.getCamera().getSubmersionType() == CameraSubmersionType.WATER && WorldgenConfig.waterToggle) {
             RenderSystemUtil.setShaderFogColor(new Vec3d(0.211, 0.211, 0.211));
             ci.cancel();
         }
