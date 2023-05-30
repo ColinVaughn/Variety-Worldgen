@@ -8,7 +8,11 @@ import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.CameraSubmersionType;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.stat.Stat;
 import net.minecraft.tag.BiomeTags;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
@@ -17,6 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.varietyworldgen.Util.MathUtil;
 import org.varietyworldgen.Util.RenderSystemUtil;
 import org.varietyworldgen.Varietyworldgen;
 
@@ -40,11 +45,16 @@ public class FogRendererMixin {
                 }
 
                 fogEnd *= Math.max(0.25f, localPlayer.getUnderwaterVisibility());
+
+                float depth = (float) (localPlayer.getPos().y - localPlayer.world.getSeaLevel());
+                float maxDepth = -20.0f;
+                float depthFactor = MathHelper.clamp(depth / maxDepth, 0.0f, 1.0f);
+                Vec3d waterColor = new Vec3d(0.68f, 0.83f, 1f).lerp(new Vec3d(0.211, 0.211, 0.211), depthFactor);
+                RenderSystemUtil.setShaderFogColor(waterColor);
             }
 
             RenderSystem.setShaderFogStart(fogStart);
             RenderSystem.setShaderFogEnd(fogEnd);
-            RenderSystemUtil.setShaderFogColor(new Vec3d(0.211, 0.211, 0.211));
             MinecraftClient.getInstance().worldRenderer.renderLightSky();
             MinecraftClient.getInstance().worldRenderer.renderDarkSky();
         }
