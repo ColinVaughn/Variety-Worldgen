@@ -24,7 +24,8 @@
   ],
   "depends": {
     "minecraft": "1.19.*",
-    "fabricloader": "*"
+    "fabricloader": "*",
+    "midnightlib": "*"
   },
   "accessWidener": "variety-worldgen.accesswidener"
 
