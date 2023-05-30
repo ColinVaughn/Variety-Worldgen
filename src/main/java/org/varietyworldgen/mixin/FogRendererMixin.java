@@ -69,7 +69,7 @@ public class FogRendererMixin {
 
     @Inject(method = "render", at = @At(value = "HEAD"), cancellable = true)
     private static void renderInject(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci) {
-        if (camera.getSubmersionType() == CameraSubmersionType.WATER) {
+        if (camera.getSubmersionType() == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
             RenderSystemUtil.setClearColor(new Vec3d(0.211, 0.211, 0.211));
             clearFog();
             ci.cancel();
@@ -79,7 +79,7 @@ public class FogRendererMixin {
     // Changes the color of the seam/transition in the sky
     @Inject(method = "setFogBlack", at = @At("HEAD"), cancellable = true)
     private static void setFogBlackInject(CallbackInfo ci) {
-        if (MinecraftClient.getInstance().gameRenderer.getCamera().getSubmersionType() == CameraSubmersionType.WATER) {
+        if (MinecraftClient.getInstance().gameRenderer.getCamera().getSubmersionType() == CameraSubmersionType.WATER && Varietyworldgen.config.waterToggle) {
             RenderSystemUtil.setShaderFogColor(new Vec3d(0.211, 0.211, 0.211));
             ci.cancel();
         }
