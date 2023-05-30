@@ -7,8 +7,6 @@
     "MonumentBuildingMixin"
   ],
   "client": [
-    "FogRendererMixin",
-    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

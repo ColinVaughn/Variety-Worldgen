@@ -14,9 +14,6 @@
   "entrypoints": {
     "main": [
       "org.varietyworldgen.Varietyworldgen"
-    ],
-    "modmenu": [
-      "org.varietyworldgen.ModMenuInt"
     ]
   },
   "mixins": [
@@ -26,7 +23,5 @@
     "minecraft": "1.19.*",
     "fabricloader": "*",
     "midnightlib": "*"
-  },
-  "accessWidener": "variety-worldgen.accesswidener"
-
+  }
 }
