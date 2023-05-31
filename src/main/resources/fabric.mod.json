@@ -21,7 +21,6 @@
   ],
   "depends": {
     "minecraft": "1.19.*",
-    "fabricloader": "*",
-    "midnightlib": "*"
+    "fabricloader": "*"
   }
 }
