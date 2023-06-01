@@ -2,6 +2,7 @@
   "temperature": 0.5,
   "downfall": 0.5,
   "precipitation": "rain",
+  "category": "ocean",
   "effects": {
     "sky_color": 8103167,
     "fog_color": 12638463,
@@ -15,17 +16,6 @@
     }
   },
   "spawners": {
-    "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
     "monster": [
       {
         "type": "minecraft:spider",
@@ -82,19 +72,21 @@
         "maxCount": 1
       }
     ],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "axolotls": [],
     "underground_water_creature": [
       {
         "type": "minecraft:glow_squid",
         "weight": 10,
         "minCount": 4,
-        "maxCount": 6
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "minecraft:cod",
-        "weight": 10,
-        "minCount": 3,
         "maxCount": 6
       }
     ],
@@ -111,7 +103,16 @@
         "minCount": 1,
         "maxCount": 2
       }
-    ]
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "misc": []
   },
   "spawn_costs": {},
   "carvers": {

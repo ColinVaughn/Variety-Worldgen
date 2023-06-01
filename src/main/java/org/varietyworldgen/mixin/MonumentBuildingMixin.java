@@ -13,6 +13,6 @@ public abstract class MonumentBuildingMixin {
             constant = @Constant(intValue = 39, ordinal = 0)
     )
     private static int mixin(int in) {
-        return 10;
+        return 15;
     }
 }
