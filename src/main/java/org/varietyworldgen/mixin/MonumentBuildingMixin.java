@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class MonumentBuildingMixin {
 
     @ModifyConstant(
-            method = "<init>(Lnet/minecraft/util/math/random/Random;IILnet/minecraft/util/math/Direction;)V",
+            method = "<init>(Ljava/util/Random;IILnet/minecraft/util/math/Direction;)V",
             constant = @Constant(intValue = 39, ordinal = 0)
     )
     private static int mixin(int in) {

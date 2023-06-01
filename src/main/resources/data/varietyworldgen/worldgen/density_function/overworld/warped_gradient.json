@@ -76,7 +76,9 @@
             "value": 0
           }
         ]
-      }
+      },
+      "min_value": 0,
+      "max_value": 1
     }
   },
   "argument2": {
@@ -114,7 +116,9 @@
             "value": 1
           }
         ]
-      }
+      },
+      "min_value": 0,
+      "max_value": 1
     }
   }
 }
