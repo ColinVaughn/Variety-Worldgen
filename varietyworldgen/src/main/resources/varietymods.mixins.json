@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.varietymods.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "varietymods.refmap.json",
+  "mixins": [
+    "MonumentBuildingMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
