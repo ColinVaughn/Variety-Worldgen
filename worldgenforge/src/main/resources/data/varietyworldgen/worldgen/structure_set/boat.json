@@ -1,0 +1,14 @@
+  {
+    "structures": [
+      {
+        "structure": "varietyworldgen:boat",
+        "weight": 1
+      }
+    ],
+    "placement": {
+      "salt": 1642136474,
+      "spacing": 40,
+      "separation": 15,
+      "type": "minecraft:random_spread"
+    }
+  }
