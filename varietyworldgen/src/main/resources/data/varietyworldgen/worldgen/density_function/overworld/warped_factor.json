@@ -7,22 +7,22 @@
             "coordinate": "minecraft:overworld/continents",
             "points": [
                 {
-                    "location": -1.05,
+                    "location": -1.1,
                     "derivative": 0,
                     "value": 0
                 },
                 {
-                    "location": -0.8,
+                    "location": -0.9,
                     "derivative": 0,
                     "value": 2.5
                 },
                 {
-                    "location": -0.275,
+                    "location": -0.35,
                     "derivative": 0,
                     "value": 2.5
                 },
                 {
-                    "location": -0.15,
+                    "location": -0.2,
                     "derivative": 0,
                     "value": 0
                 }
