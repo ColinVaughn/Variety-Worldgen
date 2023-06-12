@@ -1,7 +1,7 @@
 {
   "temperature": 0.5,
   "downfall": 0.5,
-  "precipitation": "rain",
+  "has_precipitation": true,
   "effects": {
     "sky_color": 8103167,
     "fog_color": 12638463,
@@ -195,6 +195,7 @@
       "minecraft:seagrass_warm",
       "minecraft:kelp_warm",
       "varietyworldgen:corals"
+
     ],
     [
       "minecraft:freeze_top_layer"
