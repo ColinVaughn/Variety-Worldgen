@@ -8,7 +8,7 @@
   "contact": {
     "repo": "https://github.com/Colin Vaughn/varietyworldgen"
   },
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/varietyworldgen/icon.png",
   "environment": "*",
   "entrypoints": {
